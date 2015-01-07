@@ -1,14 +1,9 @@
-// this is what you would do if you liked things to be easy:
-// var stringifyJSON = JSON.stringify;
-
-// but you don't so you're going to write it from scratch:
-
 var stringifyJSON = function(obj) {
 	//Store JSOn string
 	var result = '';
 
-	//Format for boolean base case
-	if(typeof obj === 'boolean'){
+	//Format for boolean and number base cases
+	if(typeof obj === 'boolean' || typeof obj === 'number'){
 		return obj.toString();
 	}
 
@@ -17,18 +12,13 @@ var stringifyJSON = function(obj) {
 		return '"' + obj + '"';
 	}
 
-	//Format for number base case
-	if(typeof obj === 'number'){
-		return obj.toString();
-	}
-
 	//Format for null base case
 	if(obj === null){
 		return 'null';
 	}
 
 	//Format for function and undefined base cases
-	if(typeof obj === 'function' || typeof obj === 'undefined'){
+	if(typeof obj === 'function' || obj === 'undefined'){
 		return undefined;
 	}
 
